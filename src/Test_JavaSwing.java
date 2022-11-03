@@ -10,6 +10,8 @@ public class Test_JavaSwing {
         JPanel panel = new JPanel();
         frame.add(panel,  BorderLayout.CENTER);
         JButton button1 = new JButton("Button1");
+        //WindowAdapter / WindowListener - обработка действий с окном
+
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

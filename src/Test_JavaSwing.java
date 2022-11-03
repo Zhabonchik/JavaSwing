@@ -1,19 +1,32 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.tools.Tool;
 
 public class Test_JavaSwing {
     public static void main(String[] args) {
-        JFrame frame = new JFrame("My Program");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JButton btn = new JButton("button");
-        JButton btn1 = new JButton("button1");
+        JFrame frame = createFrame();
         JPanel panel = new JPanel();
-        panel.add(btn);
-        panel.add(btn1);
-        frame.setContentPane(panel);
-        frame.setBounds(150, 150, 400, 350);
+        frame.add(panel,  BorderLayout.CENTER);
+        JButton button1 = new JButton("Button1");
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setBackground(Color.CYAN);
+            }
+        });
+        panel.add(button1);
         frame.pack();
+    }
+
+    static JFrame createFrame() {
+        JFrame frame =  new JFrame(){};
         frame.setVisible(true);
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Dimension dimension = toolkit.getScreenSize();
+        frame.setBounds(dimension.width / 2 - 400, dimension.height / 2 - 300, 800, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        return frame;
     }
 }
